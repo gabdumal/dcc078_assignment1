@@ -12,7 +12,6 @@ public class ServiceStocking implements IService {
         return "Stocking of products completed";
     }
 
-    @Override
     public String cancel() {
         return "Stocking of products canceled";
     }

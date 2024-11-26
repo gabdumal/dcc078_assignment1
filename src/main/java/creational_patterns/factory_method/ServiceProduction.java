@@ -12,7 +12,6 @@ public class ServiceProduction implements IService {
         return "Production completed";
     }
 
-    @Override
     public String cancel() {
         return "Production canceled";
     }

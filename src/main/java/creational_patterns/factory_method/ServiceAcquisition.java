@@ -6,14 +6,15 @@
 
 package creational_patterns.factory_method;
 
-public class ServiceAcquisition implements IService {
+// It does not implement the interface
+public class ServiceAcquisition {
 
     public String run() {
         return "Acquisition of items completed";
     }
 
-    @Override
     public String cancel() {
         return "Acquisition of items canceled";
     }
+
 }

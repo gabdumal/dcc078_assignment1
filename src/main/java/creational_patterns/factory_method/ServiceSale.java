@@ -12,7 +12,6 @@ public class ServiceSale implements IService {
         return "Sale of products completed";
     }
 
-    @Override
     public String cancel() {
         return "Sale of products canceled";
     }
