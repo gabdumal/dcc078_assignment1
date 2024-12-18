@@ -9,8 +9,8 @@ package creational_patterns.singleton;
 public class Parameters {
 
     private static final Parameters instance = new Parameters();
-    private String storeName;
     private String loggedUsername;
+    private String storeName;
 
     private Parameters() {
     }
@@ -34,4 +34,5 @@ public class Parameters {
     public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
+
 }
