@@ -19,7 +19,7 @@ public class SedanTest {
         Engine engine = new Gasoline();
         Sedan sedan = new Sedan(80000.0d);
         sedan.setEngine(engine);
-        assertEquals(86000.0d, sedan.calculateFinalCost());
+        assertEquals(86000.0d, sedan.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -27,7 +27,7 @@ public class SedanTest {
         Engine engine = new Diesel();
         Sedan sedan = new Sedan(80000.0d);
         sedan.setEngine(engine);
-        assertEquals(87200.0d, sedan.calculateFinalCost());
+        assertEquals(87200.0d, sedan.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class SedanTest {
         Engine engine = new Ethanol();
         Sedan sedan = new Sedan(80000.0d);
         sedan.setEngine(engine);
-        assertEquals(88000.0d, sedan.calculateFinalCost());
+        assertEquals(88000.0d, sedan.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class SedanTest {
         Engine engine = new NaturalGas();
         Sedan sedan = new Sedan(80000.0d);
         sedan.setEngine(engine);
-        assertEquals(90000.0d, sedan.calculateFinalCost());
+        assertEquals(90000.0d, sedan.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class SedanTest {
         Engine engine = new Electric();
         Sedan sedan = new Sedan(80000.0d);
         sedan.setEngine(engine);
-        assertEquals(92000.0d, sedan.calculateFinalCost());
+        assertEquals(92000.0d, sedan.calculateFinalCost(), 0.0001d);
     }
 
 }

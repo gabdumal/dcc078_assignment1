@@ -19,18 +19,16 @@ public class HatchbackTest {
     void shouldNotAllowHatchbackWithOneDoor() {
         Hatchback hatchback = new Hatchback(60000.0d);
         assertThrows(IllegalArgumentException.class, () -> {
-                    hatchback.setDoorsAmount(1);
-                }
-        );
+            hatchback.setDoorsAmount(1);
+        });
     }
 
     @Test
     void shouldNotAllowHatchbackWithFiveDoors() {
         Hatchback hatchback = new Hatchback(60000.0d);
         assertThrows(IllegalArgumentException.class, () -> {
-                    hatchback.setDoorsAmount(5);
-                }
-        );
+            hatchback.setDoorsAmount(5);
+        });
     }
 
     @Test
@@ -39,7 +37,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(2);
-        assertEquals(62500.0d, hatchback.calculateFinalCost());
+        assertEquals(62500.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -48,7 +46,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(3);
-        assertEquals(63500.0d, hatchback.calculateFinalCost());
+        assertEquals(63500.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -57,7 +55,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(4);
-        assertEquals(64500.0d, hatchback.calculateFinalCost());
+        assertEquals(64500.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -66,7 +64,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(2);
-        assertEquals(63400.0d, hatchback.calculateFinalCost());
+        assertEquals(63400.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -75,7 +73,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(3);
-        assertEquals(64400.0d, hatchback.calculateFinalCost());
+        assertEquals(64400.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -84,7 +82,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(4);
-        assertEquals(65400.0d, hatchback.calculateFinalCost());
+        assertEquals(65400.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -93,7 +91,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(2);
-        assertEquals(64000.0d, hatchback.calculateFinalCost());
+        assertEquals(64000.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -102,7 +100,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(3);
-        assertEquals(65000.0d, hatchback.calculateFinalCost());
+        assertEquals(65000.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -111,7 +109,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(4);
-        assertEquals(66000.0d, hatchback.calculateFinalCost());
+        assertEquals(66000.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -120,7 +118,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(2);
-        assertEquals(65500.0d, hatchback.calculateFinalCost());
+        assertEquals(65500.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -129,7 +127,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(3);
-        assertEquals(66500.0d, hatchback.calculateFinalCost());
+        assertEquals(66500.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -138,7 +136,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(4);
-        assertEquals(67500.0d, hatchback.calculateFinalCost());
+        assertEquals(67500.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -147,7 +145,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(2);
-        assertEquals(67000.0d, hatchback.calculateFinalCost());
+        assertEquals(67000.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -156,7 +154,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(3);
-        assertEquals(68000.0d, hatchback.calculateFinalCost());
+        assertEquals(68000.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
     @Test
@@ -165,7 +163,7 @@ public class HatchbackTest {
         Hatchback hatchback = new Hatchback(60000.0d);
         hatchback.setEngine(engine);
         hatchback.setDoorsAmount(4);
-        assertEquals(69000.0d, hatchback.calculateFinalCost());
+        assertEquals(69000.0d, hatchback.calculateFinalCost(), 0.0001d);
     }
 
 }
