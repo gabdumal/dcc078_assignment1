@@ -27,8 +27,9 @@ public class Hatchback extends Model {
 
     @Override
     public double calculateFinalCost() {
-        double doorsDiscount = (4 - this.doorsAmount) * 1000;
-        return this.baseCost - doorsDiscount;
+        double cost = this.baseCost * (1 + this.engine.costIncreasePercentage());
+        double doorsDiscount = (4 - this.doorsAmount) * 1000.0d;
+        return cost - doorsDiscount;
     }
 
 }

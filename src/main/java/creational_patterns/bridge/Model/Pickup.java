@@ -23,7 +23,7 @@ public class Pickup extends Model {
     public double calculateFinalCost() {
         double cost = this.baseCost * (1 + this.engine.costIncreasePercentage());
         if (this.hasCover) {
-            cost += 5000d;
+            cost += 5000.0d;
         }
         return cost;
     }
