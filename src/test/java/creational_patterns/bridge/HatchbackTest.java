@@ -18,17 +18,13 @@ public class HatchbackTest {
     @Test
     void shouldNotAllowHatchbackWithOneDoor() {
         Hatchback hatchback = new Hatchback(60000.0d);
-        assertThrows(IllegalArgumentException.class, () -> {
-            hatchback.setDoorsAmount(1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> hatchback.setDoorsAmount(1));
     }
 
     @Test
     void shouldNotAllowHatchbackWithFiveDoors() {
         Hatchback hatchback = new Hatchback(60000.0d);
-        assertThrows(IllegalArgumentException.class, () -> {
-            hatchback.setDoorsAmount(5);
-        });
+        assertThrows(IllegalArgumentException.class, () -> hatchback.setDoorsAmount(5));
     }
 
     @Test

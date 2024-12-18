@@ -8,7 +8,7 @@ package creational_patterns.bridge.Model;
 
 public class Hatchback extends Model {
 
-    int doorsAmount;
+    private int doorsAmount;
 
     public Hatchback(double baseCost) {
         super(baseCost);

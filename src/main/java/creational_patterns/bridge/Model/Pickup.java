@@ -8,7 +8,7 @@ package creational_patterns.bridge.Model;
 
 public class Pickup extends Model {
 
-    boolean hasCover;
+    private boolean hasCover;
 
     public Pickup(double baseCost) {
         super(baseCost);
