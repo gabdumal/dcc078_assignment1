@@ -101,7 +101,32 @@ package automotive_package as "Automotive" {
 
     }
 
-    package
+    package services_package as "Services" {
+
+        enum Status {
+            NOT_STARTED
+            RUNNING
+            CANCELLED
+            FINISHED
+        }
+
+        interface IService {
+            String begin()
+            String cancel()
+            Status getStatus()
+        }
+
+        class ServiceFactory {
+            + {static} IService getService(String serviceName)
+        }
+
+        class LoginService implements Service {
+            String begin()
+            String cancel()
+            Status getStatus()
+        }
+
+    }
 
 }
 
