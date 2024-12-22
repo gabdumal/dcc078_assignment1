@@ -1,0 +1,108 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+left to right direction
+
+package automotive_package as "Automotive" {
+
+    package car_package as "Car" {
+
+        package engine_package as "Engine" {
+
+            interface Engine {
+                double costIncreasePercentage()
+            }
+
+            class Diesel implements Engine {
+                + double costIncreasePercentage()
+            }
+
+            class Electric implements Engine {
+                + double costIncreasePercentage()
+            }
+
+            class Ethanol implements Engine {
+                + double costIncreasePercentage()
+            }
+
+            class Gasoline implements Engine {
+                + double costIncreasePercentage()
+            }
+
+            class NaturalGas implements Engine {
+                + double costIncreasePercentage()
+            }
+
+        }
+
+        package model_package as "Model" {
+
+            abstract class Model {
+                # double baseCost
+                # Engine engine
+                + Model(double baseCost)
+                + void setBaseCost(double baseCost)
+                + void setEngine(Engine engine)
+                + {abstract} double calculateFinalCost()
+            }
+            Model::engine "1" o- "1" Engine
+
+            class HatchBack extends Model {
+                - int doorsAmount
+                + HatchBack(double baseCost)
+                + void setDoorsAmount(int doorsAmount)
+                + double calculateFinalCost()
+            }
+
+            class Sedan extends Model {
+                + Sedan(double baseCost)
+                + double calculateFinalCost()
+            }
+
+            class Pickup extends Model {
+                - boolean hasCover
+                + Pickup(double baseCost)
+                + void setDoorsAmount(boolean hasCover)
+                + double calculateFinalCost()
+            }
+
+        }
+
+    }
+
+    package store_package as "Store" {
+
+        class Item {
+            - int amount
+        }
+        Item "0..*" --o "1" Model
+
+        class Cart {
+            + calculateFinalCost()
+        }
+        Cart "1" *-- "0..*" Item
+
+        class User {
+            - static final Parameters instance
+            - String username
+            - String password
+            - String name
+            - String phoneNumber
+            - String bankAccount
+
+            + {static} User getInstance()
+            + String getUsername()
+            + String getPassword()
+            + String getName()
+            + String getPhoneNumber()
+            + String getBankAccount()
+        }
+        User "1" -- "1" Cart : "Buys on"
+
+    }
+
+    package
+
+}
+
+@enduml

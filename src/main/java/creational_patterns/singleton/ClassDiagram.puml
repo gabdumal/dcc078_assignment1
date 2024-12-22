@@ -7,9 +7,9 @@ package creational_patterns{
 
         class Parameters {
 
-            - static final Parameters instance;
-            - String loggedUsername;
-            - String storeName;
+            - static final Parameters instance
+            - String loggedUsername
+            - String storeName
 
             + {static} Parameters getInstance()
             + String getLoggedUsername()
