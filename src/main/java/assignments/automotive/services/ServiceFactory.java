@@ -15,7 +15,7 @@ public class ServiceFactory {
         Object newObject = null;
 
         try {
-            newClass = forName("assignments.automotive.services.Service" + serviceName);
+            newClass = forName("assignments.automotive.services." + serviceName + "Service");
             newObject = newClass.newInstance();
         }
         catch (Exception exception) {

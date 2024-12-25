@@ -8,17 +8,44 @@ package assignments.automotive.services;
 
 public interface IService {
 
-    String begin();
-
-    String cancel();
+    default void begin() {
+        var status = this.getStatus();
+        if (status == Status.FINISHED) {
+            throw new ServiceError("The service has already finished");
+        }
+        else if (status == Status.CANCELLED) {
+            throw new ServiceError("The service has been cancelled");
+        }
+        else if (status == Status.RUNNING) {
+            throw new ServiceError("The service is already running");
+        }
+    }
 
     Status getStatus();
 
-    boolean isRunning();
+    default void cancel() {
+        var status = this.getStatus();
+        if (status == Status.FINISHED) {
+            throw new ServiceError("The service has already finished");
+        }
+        else if (status == Status.CANCELLED) {
+            throw new ServiceError("The service has already been cancelled");
+        }
+        else if (status == Status.NOT_STARTED) {
+            throw new ServiceError("The service has not started");
+        }
+    }
 
-    default void tryToRun() {
-        if (!this.isRunning()) {
-            throw new ServiceError("The service is not running");
+    default void run() {
+        var status = this.getStatus();
+        if (status == Status.FINISHED) {
+            throw new ServiceError("The service has already finished");
+        }
+        else if (status == Status.CANCELLED) {
+            throw new ServiceError("The service has been cancelled");
+        }
+        else if (status == Status.NOT_STARTED) {
+            throw new ServiceError("The service has not been started");
         }
     }
 

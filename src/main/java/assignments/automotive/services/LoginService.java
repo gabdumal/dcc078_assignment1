@@ -8,29 +8,26 @@ package assignments.automotive.services;
 
 import assignments.automotive.store.User;
 
-public class ServiceLogin
+public class LoginService
         implements IService {
 
     private Status status = Status.NOT_STARTED;
 
-    public ServiceLogin() {
+    public LoginService() {
         User.resetInstance();
     }
 
     public User getUser() {
+        if (this.status != Status.FINISHED) {
+            throw new ServiceError("The service has not finished");
+        }
         return User.getInstance();
     }
 
-    @Override
-    public String begin() {
+    public void begin() {
+        IService.super.begin();
         this.status = Status.RUNNING;
-        return "Login: inform username and password";
-    }
-
-    @Override
-    public String cancel() {
-        this.status = Status.CANCELLED;
-        return "Login: process was cancelled";
+        User.resetInstance();
     }
 
     @Override
@@ -38,22 +35,14 @@ public class ServiceLogin
         return this.status;
     }
 
-    @Override
-    public boolean isRunning() {
-        return this.status == Status.RUNNING;
+    public void cancel() {
+        IService.super.cancel();
+        this.status = Status.CANCELLED;
+        User.resetInstance();
     }
 
-    public void informUsernameAndPassword(String username, String password) {
-        this.tryToRun();
-
-        var user = User.getInstance();
-        user.setUsername(username);
-        user.setPassword(password);
-        this.status = Status.RUNNING;
-    }
-
-    public void tryToLogin() {
-        this.tryToRun();
+    public void run() {
+        IService.super.run();
 
         var user = User.getInstance();
         var username = user.getUsername();
@@ -74,12 +63,20 @@ public class ServiceLogin
             this.status = Status.FINISHED;
         }
         else {
-            user.setName("");
-            user.setPhoneNumber("");
-            user.setBankAccount("");
-            user.setLoggedIn(false);
+            User.resetInstance();
             this.status = Status.CANCELLED;
         }
+    }
+
+    public void informUsernameAndPassword(String username, String password) {
+        if (this.status != Status.RUNNING) {
+            throw new ServiceError("The service is not running");
+        }
+
+        var user = User.getInstance();
+        user.setUsername(username);
+        user.setPassword(password);
+        this.status = Status.RUNNING;
     }
 
 }
