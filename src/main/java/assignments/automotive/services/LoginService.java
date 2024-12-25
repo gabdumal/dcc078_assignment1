@@ -76,7 +76,6 @@ public class LoginService
         var user = User.getInstance();
         user.setUsername(username);
         user.setPassword(password);
-        this.status = Status.RUNNING;
     }
 
 }
