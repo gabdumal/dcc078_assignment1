@@ -8,12 +8,12 @@ package assignments.automotive.services;
 
 import assignments.automotive.store.User;
 
-public class LoginService
+public class ServiceLogin
         implements IService {
 
     private Status status = Status.NOT_STARTED;
 
-    public LoginService() {
+    public ServiceLogin() {
         User.resetInstance();
     }
 

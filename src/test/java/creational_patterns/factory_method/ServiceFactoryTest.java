@@ -18,7 +18,8 @@ public class ServiceFactoryTest {
         try {
             IService service = ServiceFactory.getService("Repairing");
             fail();
-        } catch (IllegalArgumentException exception) {
+        }
+        catch (IllegalArgumentException exception) {
             assertEquals("No such service: Repairing", exception.getMessage());
         }
     }
@@ -28,9 +29,16 @@ public class ServiceFactoryTest {
         try {
             IService service = ServiceFactory.getService("Acquisition");
             fail();
-        } catch (IllegalArgumentException exception) {
+        }
+        catch (IllegalArgumentException exception) {
             assertEquals("Invalid service: Acquisition", exception.getMessage());
         }
+    }
+
+    @Test
+    void shouldCreateService() {
+        var stocking = ServiceFactory.getService("Stocking");
+        stocking.run();
     }
 
 }

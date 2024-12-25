@@ -6,7 +6,8 @@
 
 package assignments.automotive;
 
-import assignments.automotive.services.LoginService;
+import assignments.automotive.services.ServiceFactory;
+import assignments.automotive.services.ServiceLogin;
 import assignments.automotive.services.Status;
 import org.junit.jupiter.api.Test;
 
@@ -17,43 +18,43 @@ public class MainTest {
 
     @Test
     void shouldGetStatusOfNotRunningFromLoginService() {
-        LoginService loginService = new LoginService();
-        assertSame(Status.NOT_STARTED, loginService.getStatus());
+        var login = ServiceFactory.getService("Login");
+        assertSame(Status.NOT_STARTED, login.getStatus());
     }
 
     @Test
     void shouldLogin() {
-        LoginService loginService = new LoginService();
+        var login = (ServiceLogin) ServiceFactory.getService("Login");
 
-        loginService.begin();
-        loginService.informUsernameAndPassword("gabriel", "banana");
-        loginService.tryToLogin();
-        var user = loginService.getUser();
+        login.begin();
+        login.informUsernameAndPassword("gabriel", "banana");
+        login.tryToLogin();
+        var user = login.getUser();
 
-        assertTrue(user.isLoggedIn() && loginService.getStatus() == Status.FINISHED);
+        assertTrue(user.isLoggedIn() && login.getStatus() == Status.FINISHED);
     }
 
     @Test
     void shouldNotLoginBecauseUsernameAndPasswordHaveNotBeenInformed() {
-        LoginService loginService = new LoginService();
+        var login = (ServiceLogin) ServiceFactory.getService("Login");
 
-        loginService.begin();
-        loginService.tryToLogin();
-        var user = loginService.getUser();
+        login.begin();
+        login.tryToLogin();
+        var user = login.getUser();
 
-        assertTrue(!user.isLoggedIn() && loginService.getStatus() == Status.CANCELLED);
+        assertTrue(!user.isLoggedIn() && login.getStatus() == Status.CANCELLED);
     }
 
     @Test
     void shouldNotLoginBecauseUsernameAndPasswordWereWrong() {
-        LoginService loginService = new LoginService();
+        var login = (ServiceLogin) ServiceFactory.getService("Login");
 
-        loginService.begin();
-        loginService.informUsernameAndPassword("ana", "abacaxi");
-        loginService.tryToLogin();
-        var user = loginService.getUser();
+        login.begin();
+        login.informUsernameAndPassword("ana", "abacaxi");
+        login.tryToLogin();
+        var user = login.getUser();
 
-        assertTrue(!user.isLoggedIn() && loginService.getStatus() == Status.CANCELLED);
+        assertTrue(!user.isLoggedIn() && login.getStatus() == Status.CANCELLED);
     }
 
 }

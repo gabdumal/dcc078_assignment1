@@ -9,7 +9,7 @@ package assignments.automotive.services;
 public class ServiceError
         extends RuntimeException {
 
-    ServiceError (String message) {
+    public ServiceError(String message) {
         super(message);
     }
 
