@@ -5,7 +5,7 @@ left to right direction
 
 package automotive_package as "Automotive" {
 
-    package car_package as "Car" {
+    package vehicle_package as "Vehicle" {
 
         package engine_package as "Engine" {
 
@@ -90,12 +90,13 @@ package automotive_package as "Automotive" {
             - String phoneNumber
             - String bankAccount
 
-            + {static} User getInstance()
+            + {static} final User getInstance()
             + String getUsername()
-            + String getPassword()
             + String getName()
             + String getPhoneNumber()
+            + void setPhoneNumber(String phoneNumber)
             + String getBankAccount()
+            + void setBankAccount(String bankAccount)
         }
         User "1" -- "1" Cart : "Buys on"
 
@@ -120,7 +121,7 @@ package automotive_package as "Automotive" {
             + {static} IService getService(String serviceName)
         }
 
-        class LoginService implements Service {
+        class LoginService implements IService {
             String begin()
             String cancel()
             Status getStatus()
