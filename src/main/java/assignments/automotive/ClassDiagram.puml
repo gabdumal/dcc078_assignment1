@@ -9,6 +9,14 @@ package automotive_package as "Automotive" {
 
         package engine_package as "Engine" {
 
+            enum EngineType{
+                DIESEL,
+                ELECTRIC,
+                ETHANOL,
+                GASOLINE,
+                NATURAL_GAS
+            }
+
             interface Engine {
                 double costIncreasePercentage()
             }
@@ -37,6 +45,12 @@ package automotive_package as "Automotive" {
 
         package model_package as "Model" {
 
+            enum ModelType{
+                HATCHBACK,
+                PICKUP,
+                SEDAN
+            }
+
             abstract class Model {
                 # double baseCost
                 # Engine engine
@@ -45,11 +59,11 @@ package automotive_package as "Automotive" {
                 + void setEngine(Engine engine)
                 + {abstract} double calculateFinalCost()
             }
-            Model::engine "1" o- "1" Engine
+            Model::engine "1" o-- "1" Engine
 
-            class HatchBack extends Model {
+            class Hatchback extends Model {
                 - int doorsAmount
-                + HatchBack(double baseCost)
+                + Hatchback(double baseCost)
                 + void setDoorsAmount(int doorsAmount)
                 + double calculateFinalCost()
             }
@@ -72,33 +86,30 @@ package automotive_package as "Automotive" {
 
     package store_package as "Store" {
 
-        class Item {
-            - int amount
-        }
-        Item "0..*" --o "1" Model
-
-        class Cart {
-            + calculateFinalCost()
-        }
-        Cart "1" *-- "0..*" Item
-
         class User {
-            - static final Parameters instance
+            - {static} final User instance
             - String username
             - String password
             - String name
             - String phoneNumber
             - String bankAccount
 
-            + {static} final User getInstance()
+            + {static} User getInstance()
+            + {static} void resetInstance()
+            - void initializeInstance()
+            + boolean isLoggedIn()
+            + void setLoggedIn(boolean loggedIn)
             + String getUsername()
+            + void setUsername(String username)
+            + String getPassword()
+            + void setPassword(String password)
             + String getName()
+            + void setName(String name)
             + String getPhoneNumber()
             + void setPhoneNumber(String phoneNumber)
             + String getBankAccount()
             + void setBankAccount(String bankAccount)
         }
-        User "1" -- "1" Cart : "Buys on"
 
     }
 
@@ -112,9 +123,10 @@ package automotive_package as "Automotive" {
         }
 
         interface IService {
-            String begin()
-            String cancel()
+            void begin()
             Status getStatus()
+            void cancel()
+            void run()
         }
 
         class ServiceFactory {
@@ -122,11 +134,35 @@ package automotive_package as "Automotive" {
         }
 
         class LoginService implements IService {
-            String begin()
-            String cancel()
-            Status getStatus()
+            - Status status
+
+            + User getUser()
+            + void begin()
+            + Status getStatus()
+            + void cancel()
+            + void run()
+            + void informUsernameAndPassword(String username, String password)
         }
 
+        class PurchaseService implements IService {
+            - Model model
+            - Status status
+
+            + void begin()
+            + Status getStatus()
+            + void cancel()
+            + void run()
+            + void informModelAndEngine(ModelType modelType, EngineType engineType)
+            - Engine getEngine(EngineType engineType)
+            - Model getModel(ModelType modelType)
+            + void informHatchbackDoorsAmount(int doorsAmount)
+            + void informIfPickupHasCover(boolean hasCover)
+            + double calculateFinalCost()
+        }
+
+        class ServiceError extends RuntimeException{
+            + ServiceError(String message)
+        }
     }
 
 }
